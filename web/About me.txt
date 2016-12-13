@@ -1,0 +1,9 @@
+
++ Kuvat aukeaa samaan näkymään, kuten login. Kuvan avaus ja sulkeminen toimii. Iso kuva toimii!
++ Upload raakile olemassa, ei vielä toiminnallisuutta
+
+- Sama sulkemisScripti toistuu monta kertaa, pitäisi saada tiivistettyä
+- Jos login on auki ja klikkaa uploadia, upload aukeaa, mutta login ei sulkeudu. Sama systeemi kaikilla avautuvilla diveillä.
+--> Tarvitaan jokin yleispätevä systeemi, jotta raksi sulkee kaikki 'ikkunat' ja että uuden 'ikkunan' auetessa, vanha sulkeutuu.
+- Pohdin footerin lisäämistä
+- Menun sisältöä ei voi skrollata -> vaakatasossa kännykällä kaikki ei näy :(

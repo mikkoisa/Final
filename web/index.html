@@ -1,0 +1,865 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		
+		<link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/main.css">
+		<link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
+		
+		<title>Best Site</title>
+		
+		
+	</head>
+	
+	<body>
+		<header class="header-background">
+			<div class="header-content">
+				<div class="top-left">
+                                    <a href="index.html"><img src="img/Logomakr_1hfTWf.png" height="70px"></a>
+                                     
+				</div>
+				
+				<div class="top-right">
+					<nav class="nav-center">
+					
+						<!----------Yläpalkin shitit kun näyttö on iso------------>
+						<ul class="nav-large">
+                                                        <li id="tags"><h3>Categories</h3></li>
+							<li><a href="#"><h3>Statistics</h3></a></li>
+							<li id="upload"><h3>Upload</h3></li>
+							<li class="dropdown"><a href="#"><h3>Sort by</h3></a>
+								<div class="dropdown-content">
+									<p id="newestMedia">New</p>
+									<p id="popularMedia">Popular</p>
+									<p id="randomMedia">Random</p>
+								</div>
+							</li>
+						</ul>					
+					</nav>
+					<!--------------Log in ja sing up buttonit------------->
+					<nav class="nav-right">
+						<ul class="buttons" id="userin">
+							<!--<li id="nappula"><h3>Sign up</h3></li>-->
+							<li id="loginbutton"><h3>Log in</h3></li>
+                                                       
+						</ul>
+						
+						<!-------------Yläpalkin shitit kun näyttö on pieni------------>
+						<div  class="mobile-menu"> <!--HAMBURGER BUTTON-->
+							<img id="mobilemenu" src="img/mobile-menu-button.png">
+							<div id="mobilemenucontent" class="mobile-menu-content">
+								<ul id="ulina">
+									<li id ="loginbutton1"><h3>Log in</h3></li>
+									<li id="tagsmobile"><h3>Categories</h3></li>
+									<li><a href="#"><h3>Statistics</h3></a></li>
+									<li id="uploadmobile"><h3>Upload</h3></li>
+									<li id="sortby"><h3>Sort by</h3>
+										<div id="sortbyoptions">
+											<h3 id="newestMediaMobile">New</h3>
+											<h3 id="popularMediaMobile">Popular</h3>
+											<h3 id="randomMediaMobile">Random</h3>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+						
+					</nav>
+				</div>
+			</div>
+		</header>
+		
+		
+		<!----------Yläpalkin napeista painettaessa aukeavat shitit----------->
+		
+                <!--------categories/tags ruutu-------->
+                <div id="tagsdiv" class="modal">
+			<div id="tagsblock" class="modalcont">
+				<img id="closetags" class="closebutton" src="img/close.png">
+                                <div id="tagscontent"></div>
+			</div>
+		</div>
+                
+                
+		<!---------Upload ruutu--------->
+		<div id="uploaddiv" class="modal">
+			<div id="uploadblock" class="modalcont">
+                            <img id="closeupload" class="closebutton" src="img/close.png">
+                            
+                            <form id='uploadform' action="upload" method='post' enctype="multipart/form-data" accept-charset='UTF-8'>
+                                <div id="uploginerror" class="error"></div><br/>
+                                <fieldset>
+                                <div class="container">
+                                    <label for='photo' >Select your photo</label><br/>
+                                    <input class="fileinput" type="file" name='upphoto' id='photo' /><br/>
+                                </div>
+
+
+                                <div class="container">
+                                    <label for='uptitle' >Title</label><br/>
+                                    <input type='text' name='uptitle' id='name' maxlength="50" /><br/>
+                                </div>
+                                <div class="container">
+                                    <label for='uptags' >Tags</label><br/>
+                                    <input type='text' name='uptags' id='email'  maxlength="50" /><br/>
+                                </div>
+                                <div class="container">
+                                    <label for='updesc' >Description</label><br/>
+                                    <textarea rows="10" cols="50" name='updesc' id='message'></textarea>
+                                </div>
+                                
+
+                                    <input  type='submit' id="upload_button" name='Submit' value='Upload' />
+                               
+
+                                </fieldset>
+                                </form>           
+
+			</div>
+		</div>
+		
+		<!----------Log in ja sign up ruutu--------->
+		<div id="logindiv" class="modal">
+			<div id="loginblock" class="modalcont">
+				<img id="closelogin" class="closebutton" src="img/close.png">
+				<form id="loginform"  method="post">
+					<div class="login">
+						<h2>Log in</h2>
+					</div>
+
+					<div class="wrap">
+						<div class ="rowblock">
+							<div class="block1">
+								<label>Username</label>
+							</div>
+							<div class="block2">
+								<input type="text" name="login_username" id="usr">
+							</div>
+							<!--<div class="block3"></div>-->
+						</div>			
+						<div class ="rowblock">
+							<div class="block1">
+								<label>Password</label>
+							</div>
+							<div class="block2">
+								<input type="password" name="login_password" id="pwd">
+							</div>
+							<div class="block3">
+								<button class="logbutton" type="button" id="jenson_button" >
+                                                                    
+								<span>Login</span></button>
+                                                            
+							</div>
+						</div>
+                                        <div id="error" class="error"></div>
+					</div>
+				</form>
+				<form id="signupform" method="post">
+					<div class="login">
+						<h2>Or sing up</h2>
+					</div>
+
+					<div class="wrap">
+						<div class ="rowblock">
+							<div class="block1">
+								<label>Username</label>
+							</div>
+							<div class="block2">
+								<input type="text" name="signup_username" id="signup_usr">
+							</div>
+							<!--<div class="block3"></div>-->
+						</div>			
+						<div class ="rowblock">
+							<div class="block1">
+								<label>Password</label>
+							</div>
+							<div class="block2">
+								<input type="password" name="signup_password" id="signup_pwd">
+							</div>
+							<div class="block3">
+								<button class="logbutton" type="button" id="signup_button">
+								<span>Sign up</span></button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		
+		<main>
+			<!---------------GALLERIA--------------->
+			<div class="gallery" id="galtsu">
+				<ul id="kuvalista" class="photolist">
+				
+					<!---- Tänne tulee kuvat javascriptillä---->
+					
+				</ul>
+			</div>
+			
+			<div id="photodisplay" class="modal">
+				<div id="photodisplaycontent" class="modalcont">
+				
+                                    <div id="picandform">
+                                        
+					<img id="closephoto" class="closebutton" src="img/close.png">
+					<figure id="photolarge">
+                                            
+                                                <div id="titleAndDesc">
+                                                    <p id="title"></p>
+                                                    <p id="desc"></p>
+                                                </div>
+                                            
+						<img class="largephoto">
+					
+						<!------Tänne tulee iso kuva------>
+					</figure>
+                                        
+                                        <div id="commentbox">
+                                            <div id="tools"></div>
+                                                <form method="post">
+                                                        <textarea name="comments" class="commentform" id="comment_text"></textarea>
+                                                        <br>
+                                                        <input type="button" value="Submit" class="commentform" id="comment_button">
+                                                        <input type="reset" value="Reset" class="commentform">
+                                                </form>
+                                            <div id="loginerror" class="error"></div>
+                                            <div id="comments"></div>
+                                            <div class="pictags"></div>
+                                        </div>
+                                        
+                                    </div>
+				</div>				
+			</div>
+			
+                        <!----
+                        <div id="rightbrowse">
+                            <img id="mobilemenu" src="img/cursor-arrow-right.png">
+                        </div>
+                         <div id="leftbrowse">
+                            <img id="mobilemenu" src="img/cursor-arrow-left.png">
+                        </div>--->
+		</main>
+	</body>
+	
+	
+	<!--------------*******SCRIPTS********------------------->
+	<!--<script>
+		var closebutton = document.getElementsByClassName("closebutton");
+		function closeDiv () {
+			if (document.getElementsByClassName("modal").style.display == 'block'){
+				document.getElementsByClassName("modal").style.display = 'none';
+			}
+		}
+		closebutton.addEventListener('click', closeDiv);
+	</script>-->
+	
+	
+        <script>
+            function getNewestMedia() {
+                from = 0; to = 1000;
+                createGallery('rest/media/new/'+from+'/'+to);
+                mobilemenucontent.style.display ='none';
+                uploaddiv.style.display = 'none';
+                                photodisplay.style.display='none';
+                                tagsdiv.style.display = 'none';
+
+            }
+            document.getElementById('newestMedia').addEventListener('click', getNewestMedia);
+            document.getElementById('newestMediaMobile').addEventListener('click', getNewestMedia);
+        </script>
+        
+        <script>
+            function getPopularMedia() {
+                from = 0; to = 10;
+                createGallery('rest/media/popular/'+from+'/'+to);
+                mobilemenucontent.style.display ='none';
+                uploaddiv.style.display = 'none';
+                                photodisplay.style.display='none';
+                                tagsdiv.style.display = 'none';
+
+            }
+            document.getElementById('popularMedia').addEventListener('click', getPopularMedia);
+            document.getElementById('popularMediaMobile').addEventListener('click', getPopularMedia);
+        </script>
+        
+        <script>
+            function getRandomMedia() {
+                from = 0; to = 1000;
+                createGallery('rest/media/random/'+from+'/'+to);
+                mobilemenucontent.style.display ='none';
+                uploaddiv.style.display = 'none';
+                                photodisplay.style.display='none';
+                                tagsdiv.style.display = 'none';
+
+            }
+            document.getElementById('randomMedia').addEventListener('click', getRandomMedia);
+            document.getElementById('randomMediaMobile').addEventListener('click', getRandomMedia);
+        </script>
+        
+        <script>
+            
+            /*
+            function uploadCheck() {
+                /*var form = new FormData(document.getElementById('uploadform'));
+                fetch("upload", {
+                    credentials: 'same-origin',
+                    method: "POST",
+                    headers: {  
+                        "Content-type": 'multipart/form-data'
+                    }, 
+                    body: form
+                    }).then(function (data) {  
+                        console.log('success', data); 
+                    })  
+                    .catch(function (error) {  
+                        console.log('fail', error);  
+                    });
+                    window.location = "/projeckti";
+
+            
+            var id = document.getElementById("upload_button");
+            id.onkeydown=function(){if (event.keyCode == 13) this.click()};
+            id.addEventListener('click', uploadCheck, false); */
+        </script>
+        
+        <!--------send comment or show error message if not logged in---------->
+        <script>
+            function checkAndSend(){
+
+                        var xmlhttp = new XMLHttpRequest();
+                        var url = "rest/s";
+
+                        xmlhttp.onreadystatechange = function() {
+                            if (this.readyState == 4) {
+                                var info = JSON.parse(this.responseText);
+                                
+                                if (info.status == true) {
+                                    
+                                    //console.log(document.getElementById("comment_text").value);
+                                    var msg =document.getElementById("comment_text").value;
+                                    var mediaid = document.querySelector('.largephoto').id;
+                                    var userid = info.id;
+                                    fetch("rest/comments", {
+                                         credentials: 'same-origin',
+                                      method: "POST",
+                                      headers: {  
+                                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+                                      }, 
+                                      body: 'message='+msg+'&media='+mediaid+'&user='+userid
+                                    }).then(function (data) {  
+                                        console.log('success', data); 
+                                      })  
+                                      .catch(function (error) {  
+                                        console.log('fail', error);  
+                                      });
+                                      //console.log('message='+msg+'&media='+mediaid+'&user='+userid);
+                                    document.getElementById("comment_text").value = "";
+                                    document.getElementById("nocomments").style.display="none";
+                                    document.getElementById("comments").appendChild(createComment(mediaid, info.user, msg, "now"));
+                                    //showCommentsAndTags(mediaid);
+                            
+                                } else {
+                                    var error = document.createElement("div");
+                                    error.id = "loginerror";
+                                    error.className="error";
+                                    error.innerHTML = "<p>please log in to comment</p>";
+                                    commentbox.replaceChild(error,document.querySelector("#loginerror"));
+                                }
+                            }
+                        };
+                        xmlhttp.open("get", url, false);
+                        xmlhttp.send();
+            };
+            
+            var id = document.getElementById("comment_button");
+            id.onkeydown=function(){if (event.keyCode == 13) this.click()};
+            id.addEventListener('click', checkAndSend, false);
+        </script>
+        
+       
+        <!----When logged in, login buttons disappear from both menus logout buttons are added---->
+        <script>
+             var xmlhttp = new XMLHttpRequest();
+                var url = "rest/s";
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        var info = JSON.parse(this.responseText);
+                        var name = info.user;
+
+                        if (info.status === true) {
+                                    changeLargeView(name);
+  
+                                    changeMobileView(name);
+                                    
+                                    
+                                    
+                        } else {
+                            document.getElementById("uploginerror").innerHTML = "<p>Please log in to upload</p>";
+                        } 
+                    }
+                };
+                xmlhttp.open("get", url, false);
+                xmlhttp.send();
+                
+                function changeLargeView(name) {
+                                document.getElementById("loginbutton").style.display = 'none';
+                                var lipton = document.createElement("li");
+                                
+                                var t = "logged in as "+name;
+                                //lipton.className = "sortby";
+                                lipton.id ="uusid";
+                                lipton.className="dropdown";
+                                lipton.innerHTML = '<a href="#"><h3>'+t+'</h3><div class="dropdown-content"><p><a href="rest/s/logout">Logout</a></p><div></a>'; //<div id="sortbyoptions"> <h3>logout</h3>  </div>';
+                                document.getElementById("userin").appendChild(lipton);
+                                
+                                
+
+                                
+                                
+                }
+                function changeMobileView(name) {
+                    
+
+                                document.getElementById("loginbutton1").style.display = 'none';
+                                var lisko = document.createElement("li");
+                                lisko.id="logoutbutton";
+                                lisko.innerHTML = '<h3><a href="rest/s/logout">Log out</a></h3>';
+                                document.getElementById("ulina").appendChild(lisko);
+                                
+                                var loggedin = document.createElement("li");
+                                loggedin.id="loggedin";
+                                loggedin.innerHTML = '<h3>Logged in as '+name+'</h3>'
+                                document.getElementById("ulina").insertBefore(loggedin, document.getElementById("ulina").firstChild);
+                                
+                                
+                }
+        </script>
+        
+        
+        <!---login shows error on wrong credentials. also enter key works as click--->
+        <script>
+            
+            function loginCheck(){
+                    fetch("rest/s/login", {
+                                      credentials: 'same-origin',
+                                      method: "POST",
+                                      headers: {  
+                                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+                                      }, 
+                                      body: 'login_username='+document.getElementById("usr").value+'&login_password='+document.getElementById("pwd").value
+                                    }).then(function (data) {  
+                                        console.log('success', data);
+                                        //
+                                        if (data.ok == true) {
+                                            window.location = "/projeckti";
+                                        } else {
+                                            document.getElementById("error").innerHTML = "<p>error!!!!</p>";
+                                        }
+                                      })  
+                                      .catch(function (error) {  
+                                        console.log('fail', error);
+                                      });
+            };
+
+            
+            var id = document.getElementById("jenson_button");
+            id.onkeydown=function(){if (event.keyCode == 13) this.click()};
+            id.addEventListener('click', loginCheck, false);
+
+             //});
+        </script>
+        
+        <script>
+            
+            function signupCheck(){
+                                    fetch("rest/s/signup", {
+                                      credentials: 'same-origin',
+                                      method: "POST",
+                                      headers: {  
+                                        "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+                                      }, 
+                                      body: 'signup_username='+document.getElementById("signup_usr").value+'&signup_password='+document.getElementById("signup_pwd").value
+                                    }).then(function (data) {  
+                                        console.log('success', data);
+                                        if (data.ok == true) {
+                                            window.location = "/projeckti";
+                                        } else {
+                                            document.getElementById("error").innerHTML = "username is taken!";
+                                        }
+                                      })  
+                                      .catch(function (error) {  
+                                        console.log('fail', error);
+                                      });
+            };
+
+            
+            var id = document.getElementById("signup_button");
+            id.onkeydown=function(){if (event.keyCode == 13) this.click()};
+            id.addEventListener('click', signupCheck, false);
+
+             //});
+        </script>
+        
+	<!--This opens uploadscreen-->
+	<script>
+
+		var openUpload = function (){
+			if (uploaddiv.style.display == 'block') {
+				uploaddiv.style.display = 'none';
+			}
+			else {
+				uploaddiv.style.display = 'block';
+                                photodisplay.style.display='none';
+                                tagsdiv.style.display = 'none';
+                                mobilemenucontent.style.display ='none';
+			}
+		}
+		document.getElementById("upload").addEventListener('click', openUpload);
+		document.querySelector('#closeupload').addEventListener('click', openUpload);
+                
+                document.getElementById("uploadmobile").addEventListener('click', openUpload);
+	</script>
+        
+        <!---this opens tags screen----->
+        <script>
+		var openTags = function (){
+			if (tagsdiv.style.display == 'block') {
+                            tagsdiv.style.display = 'none';
+			}
+			else {
+			    tagsdiv.style.display = 'block';
+                            uploaddiv.style.display = 'none';
+                            photodisplay.style.display='none';
+                            mobilemenucontent.style.display ='none';
+                                
+                                function fetchTseison() {
+                                    fetch("rest/media/tags").then(function(response) {
+                                        return response.json();
+                                    }).then(function(json) {
+                                        createTags(json);
+                                    });
+                                }
+                                fetchTseison();
+                                
+                                
+                                function createTags(json) {
+                                    var t = document.createElement("div");
+                                    t.id = "tagscontent";
+
+                                    if (json.tags.length >0) {
+                                        var a;
+                                        for(i=0; i<json.tags.length; i++){
+                                            a = document.createElement("a");
+                                            //a.href = "rest/media/tags/"+json.tags[i].name;
+                                            a.id = json.tags[i].id;
+                                            a.innerHTML = json.tags[i].name;
+                                            t.appendChild(a);
+                                        }
+                                    }
+                                    tagsblock.replaceChild(t,document.getElementById("tagscontent"));
+                                    
+                                    document.getElementById("tagscontent").addEventListener("click", tagClicked, false);
+                                }  
+
+                        }
+		}
+                function tagClicked(e) {
+                    if (e.target !== e.currentTarget) {
+                        var clickedTag = e.target.id;
+                        createGallery('rest/media/tags/id/'+clickedTag);
+                        tagsdiv.style.display = 'none';
+                        photodisplay.style.display='none';
+                    }
+                    e.stopPropagation();
+                }
+		document.getElementById("tags").addEventListener('click', openTags);
+		document.querySelector('#closetags').addEventListener('click', openTags);
+                
+                document.getElementById("tagsmobile").addEventListener('click', openTags);
+	</script>
+        
+	
+	<!----This creates the gallery and opens the photodisplay---->
+	<script>
+	var from=0;
+        var no;
+        var picsperscreen = 1000;
+        var to =picsperscreen;
+        
+
+		function createGallery (url){
+			var hearturl = "img/heart.png";
+			var i = 0;
+			//var imgurl = "";
+			//var imgurls = ["img/cat1.jpg", "img/cat2.jpg", "img/cat3.jpg", "img/cat4.jpg", "img/cat5.jpg", "img/cat6.jpg", "img/cat7.jpg", "img/cat8.jpg", "img/cat9.jpg", "img/cat10.jpg", "img/cat11.jpg", "img/cat12.jpg"];
+			
+                        //alkaa kuvasta from ja päättyy tohon toiseen
+                        
+
+                        function fetchTseison() {
+                            fetch(url).then(function(response) {
+                                return response.json();
+                            }).then(function(json) {
+                                photolist(json);
+                            });
+                        }
+                        fetchTseison();
+                        
+                        function photolist(json) {
+                            var d = document.createElement("div");
+                            d.id = "kuvalista";
+                                    d.className ="photolist";
+                                    no = json.number;
+
+                            while(i < json.media.length){
+                                    //imgurl = imgurls[i];
+                                    var a = document.createElement("LI");//creates <li> element
+                                    var b = document.createElement("FIGURE"); //creates <figure> element
+                                    var c = document.createElement("IMG");//creates <img> element
+                                    //var d = document.getElementById("kuvalista"); // connection to <ul>
+                                    var e = document.createElement("FIGCAPTION"); //creates <figcaption>
+                                    var f = document.createElement("IMG"); //creates the heart img
+                                    c.addEventListener('click', openPhoto);
+                                    c.setAttribute("src", json.media[i].url);
+                                    c.mediaid = json.media[i].id;
+                                    
+                                    f.id = ("heart");
+                                    f.setAttribute ("src", hearturl);
+                                    a.appendChild(b);// <li> wraps <figure>
+                                    b.appendChild(c); // <figure> wraps <img>
+                                    b.appendChild(e); // <figure> wraps <figcaption>
+                                    e.appendChild(f); // <figcaption> wraps heart <img>
+                                    
+                                    
+                                    
+                                    
+                                    d.appendChild(a); // <ul> wraps <li>
+                                    
+                                    
+                                    //console.log(ids);
+                                    i++;
+                            }
+                            galtsu.replaceChild(d,document.getElementById("kuvalista"));
+                        }
+		}	
+		createGallery('rest/media/new/'+from+'/'+to);
+		
+		function openPhoto(idparam) {
+			if (photodisplay.style.display=='block'){
+				photodisplay.style.display='none';
+                                document.getElementById("comments").innerHTML = ""; //to make previous comments disappear on close before loading new
+                                document.getElementById("title").innerHTML = "";
+                                document.getElementById("desc").innerHTML = "";
+			}
+			else {
+				document.querySelector('.largephoto').src = this.src;
+                                document.querySelector('.largephoto').id = idparam.target.mediaid;
+				photodisplay.style.display='block';
+                                showCommentsAndTags(idparam);
+                                document.getElementById("loginerror").innerHTML = "";
+                                document.getElementById("comment_text").value = "";
+                                
+                                fetch('rest/media/'+idparam.target.mediaid).then(function(response) {
+                                    return response.json();
+                                }).then(function(json) {
+                                    document.getElementById("title").innerHTML = json.title+"<h1 id=\"rating\">"+json.rating+"</h1><img id=\"upvote\" src=\"img/upvote.png\"><div style=\"float:right; padding:0; margin-top:16px; font-size:12px; margin-right:10px;\">uploader: "+json.username+"</div>";
+                                    document.getElementById("desc").innerHTML = json.desc;
+                                    document.getElementById("upvote").addEventListener("click", 
+                                                    function () {
+                                                        fetch("rest/media/"+idparam.target.mediaid+"/upvote", {
+                                                                  credentials: 'same-origin',
+                                                                  method: "POST",
+                                                                  body: 'mediaid='+idparam.target.mediaid
+                                                                }).then(function (data) {  
+                                                                    console.log('success', data);
+                                                                    if (data.ok == true ) {
+                                                                        document.getElementById("rating").innerHTML = json.rating+1;
+                                                                    }
+                                                                  })  
+                                                                  .catch(function (error) {  
+                                                                    console.log('fail', error);  
+                                                                  });
+                                                    },false);
+                                    
+                                    
+                                    
+                                });
+                                
+			}
+			document.querySelector('#closephoto').addEventListener('click', openPhoto);
+                        
+                        
+		}
+                
+                function showCommentsAndTags(idparam) {
+                            
+                            function fetchTseison() {
+                                var url = 'rest/comments/'+idparam.target.mediaid;
+                                fetch(url).then(function(response) {
+                                    return response.json();
+                                }).then(function(json) {
+
+                                    createComments(json);
+
+                                });
+                                
+                               var url = 'rest/media/'+idparam.target.mediaid+'/tags/';
+                                fetch(url).then(function(response) {
+                                    return response.json();
+                                }).then(function(tjson) {
+
+                                    createTags(tjson);
+
+                                });
+                            }
+                            fetchTseison();
+
+                            var i = 0;
+                            function createComments(json) {
+                                var com = document.createElement("div");
+                                    com.id = "comments";
+
+                                if (json.comments.length === 0) {
+                                    var c = document.createElement("div");
+                                    c.className="comment";
+                                    c.innerHTML="<p id=\"nocomments\" class=\"kommari-info\">no comments</p>";
+                                                                    //console.log(json.comments.length);
+                                    com.appendChild(c);
+                                } else {
+                                    for(i=0; i<json.comments.length; i++){
+
+                                        var c = createComment(json.comments[i].id, json.comments[i].user, json.comments[i].comment, json.comments[i].time);
+
+                                        com.appendChild(c);
+
+                                     }
+                                 }
+                                commentbox.replaceChild(com,document.getElementById("comments"));
+                            }
+                            
+                            function createTags(tjson) {
+                                var t = document.createElement("div");
+                                t.className="pictags";
+                                
+                                if (tjson.tags.length >0 ) {
+                                    t.style.marginTop="20px";
+                                    var a;
+                                    for(i=0; i<tjson.tags.length; i++){
+                                        a = document.createElement("a");
+                                        a.id = tjson.tags[i].id
+                                        a.innerHTML = tjson.tags[i].name;
+                                        t.appendChild(a);
+                                    }
+                                 }
+                                commentbox.replaceChild(t,document.querySelector(".pictags"));
+                                document.querySelector(".pictags").addEventListener("click", tagClicked, false);
+                            }        
+                        }
+                
+                function createComment(id, user, comment, time) {
+                            var c = document.createElement("div");
+                                        c.className="comment";
+                                        c.id = id;
+                                        c.innerHTML="<p class=\"kommari-info\">"+user+"<span class=\"timmy\">"+time+"</span></p><p class=\"kommari\">"+comment+"</p>"; //
+                                        return c;
+                }
+                
+                /*
+                function nextMedia() {
+                        
+                    if (to+picsperscreen <= no+picsperscreen) {
+                        from+=picsperscreen;
+                        to +=picsperscreen;
+                        var url = 'rest/media/new/'+from+'/'+to;
+                        createGallery(url);
+                    }
+                }
+                function previousMedia() {
+
+                    if (from-picsperscreen >= 0) {
+                        from-=picsperscreen;
+                        to -=picsperscreen;
+                        var url = 'rest/media/new/'+from+'/'+to;
+                        createGallery(url);
+                    }
+                }
+                    
+                document.getElementById("rightbrowse").addEventListener('click', nextMedia);
+                document.getElementById("leftbrowse").addEventListener('click', previousMedia);*/
+                
+	</script>
+		
+	<!--------------Sort By in mobile menu------------->
+	<script>
+		var sortbybutton = document.querySelector('#sortby');
+		var openMenu = function (){
+			if (sortbyoptions.style.display == 'block') {
+					sortbyoptions.style.display = 'none';
+				}
+			else {
+				sortbyoptions.style.display = 'block';
+			}
+		}
+		sortbybutton.addEventListener('click', openMenu);
+	</script>
+
+<!--------This opens the mobile menu and closes it when clicked again or when login is clicked----------->
+	<script>
+		var menuButton = document.querySelector('#mobilemenu');
+		var loginbutton = document.querySelector('#loginbutton1');
+		
+		var openMenu = function (){
+			if (mobilemenucontent.style.display == 'block') {
+				mobilemenucontent.style.display = 'none';
+			}
+			else {
+				mobilemenucontent.style.display = 'block';
+			}
+		}
+		var closeMenu = function(){
+			mobilemenucontent.style.display = 'none';
+		}
+		
+		
+		menuButton.addEventListener('click', openMenu);
+		loginbutton.addEventListener('click', closeMenu);
+				
+	</script>
+
+	<!---------------This opens the login screen--------------------->
+	<script>
+		var button = document.querySelector('#loginbutton');
+		var button1 = document.querySelector('#loginbutton1');
+		var closelogin = document.querySelector('#closelogin');
+		
+		//var login = document.getElementById('logindiv');
+		
+		var openLogin = function () {
+			if (logindiv.style.display =='block'){
+				logindiv.style.display = 'none';
+                                document.getElementById("error").innerHTML = "";
+			}
+			else {
+				logindiv.style.display = 'block';
+                                uploaddiv.style.display = 'none';
+                                photodisplay.style.display='none';
+                                tagsdiv.style.display = 'none';
+			}
+			
+		}
+		button.addEventListener('click', openLogin);
+		button1.addEventListener('click', openLogin);
+		closelogin.addEventListener('click', openLogin);
+		
+		/*window.onclick = function(event) {
+			if (event.target == logindiv) {
+				logindiv.style.display = "none";
+			}
+		}*/
+	</script>		
+</html>
